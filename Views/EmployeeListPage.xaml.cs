@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows;
 
-namespace Empro
+namespace Empro.Views
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// EmployeeListPage.xaml の相互作用ロジック
+    /// </summary>
+    public partial class EmployeeListPage : Page
     {
-        public MainWindow()
+        public EmployeeListPage()
         {
             InitializeComponent();
-            Content = new Views.EmployeeListPage();
         }
     }
 }
