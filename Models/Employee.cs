@@ -1,30 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 
 namespace Empro.Models
 {
     public class Employee
     {
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Furigana { get; set; }
-        public string Gender { get; set; }
-        public string Department { get; set; }
-        public string EmploymentType { get; set; }
-        public DateTime BirthDate { get; set; }
-        public DateTime JoiningDate { get; set; }
-        public DateTime? RetirementDate { get; set; }
-        public string Address { get; set; }
-        public string ResidentTaxType { get; set; }
+        public string EmployeeNumber { get; set; } // Ensure this property is unique
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Kana { get; set; }
+        public Gender Gender { get; set; }
+        public DepartmentType Department { get; set; }
+        public EmploymentType EmploymentType { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? JoinDate { get; set; }
+        public DateTime? ResignDate { get; set; }
+        public string TaxAddress { get; set; }
+        public TaxCategory ResidentTaxCategory { get; set; }
         public string Notes { get; set; }
-        public string SocialInsuranceStatus { get; set; }
-        public DateTime? SocialInsuranceDate { get; set; }
-        public string EmploymentInsuranceStatus { get; set; }
-        public DateTime? EmploymentInsuranceDate { get; set; }
+        public bool IsSocialInsuranceJoined { get; set; }
+        public DateTime? SocialInsuranceJoinDate { get; set; }
+        public bool IsEmploymentInsuranceJoined { get; set; }
+        public DateTime? EmploymentInsuranceJoinDate { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male, // 男
+        Female // 女
+    }
+
+    public enum DepartmentType
+    {
+        Royal, // ロイヤル
+        Annex, // アネックス
+        Sala // サーラ郡上
+    }
+
+    public enum EmploymentType
+    {
+        Executive, // 役員
+        Regular, // 正社員
+        PartTime // パート
+    }
+
+    public enum TaxCategory
+    {
+        Ordinary, // 普通徴収
+        Special // 特別徴収
     }
 }

@@ -8,16 +8,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows;
+using Empro.Views;
 
-namespace Empro
+namespace Empro.Views
 {
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            Content = new Views.EmployeeListPage();
+        }
+
+        private void OpenAddEmployeeWindow(object sender, RoutedEventArgs e)
+        {
+            var addEmployeeWindow = new AddEmployeeWindow();
+            addEmployeeWindow.ShowDialog();
         }
     }
 }
+
+
