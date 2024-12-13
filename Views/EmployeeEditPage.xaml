@@ -1,14 +1,74 @@
 ﻿<Page x:Class="Empro.Views.EmployeeEditPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Empro.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="EmployeeEditPage">
-
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="社員編集ページ">
     <Grid>
-        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+                <Label Content="社員番号"/>
+                <TextBox Name="EmployeeNumberTextBox" Margin="0,5" IsReadOnly="True"/>
+                <Label Content="姓"/>
+                <TextBox Name="FirstNameTextBox" Margin="0,5"/>
+                <Label Content="名"/>
+                <TextBox Name="LastNameTextBox" Margin="0,5"/>
+                <Label Content="フリガナ"/>
+                <TextBox Name="KanaTextBox" Margin="0,5"/>
+                <Label Content="性別"/>
+                <ComboBox Name="GenderComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Male"/>
+                    <ComboBoxItem Content="Female"/>
+                </ComboBox>
+                <Label Content="部署"/>
+                <ComboBox Name="DepartmentComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Royal"/>
+                    <ComboBoxItem Content="Annex"/>
+                    <ComboBoxItem Content="SalaGujo"/>
+                </ComboBox>
+                <Label Content="雇用形態"/>
+                <ComboBox Name="EmploymentTypeComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Executive"/>
+                    <ComboBoxItem Content="FullTime"/>
+                    <ComboBoxItem Content="PartTime"/>
+                </ComboBox>
+                <Label Content="生年月日"/>
+                <DatePicker Name="BirthDatePicker" Margin="0,5"/>
+                <Label Content="入社日"/>
+                <DatePicker Name="JoinDatePicker" Margin="0,5"/>
+                <Label Content="退職日"/>
+                <DatePicker Name="ResignDatePicker" Margin="0,5"/>
+                <Label Content="住民税を収める住所"/>
+                <TextBox Name="TaxAddressTextBox" Margin="0,5"/>
+                <Label Content="住民税区分"/>
+                <ComboBox Name="ResidentTaxCategoryComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Ordinary"/>
+                    <ComboBoxItem Content="Special"/>
+                </ComboBox>
+                <Label Content="備考"/>
+                <TextBox Name="NotesTextBox" Margin="0,5"/>
+                <Label Content="社会保険加入状況"/>
+                <ComboBox Name="SocialInsuranceComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Joined"/>
+                    <ComboBoxItem Content="NotJoined"/>
+                </ComboBox>
+                <Label Content="社会保険加入日"/>
+                <DatePicker Name="SocialInsuranceJoinDatePicker" Margin="0,5"/>
+                <Label Content="雇用保険加入状況"/>
+                <ComboBox Name="EmploymentInsuranceComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Joined"/>
+                    <ComboBoxItem Content="NotJoined"/>
+                </ComboBox>
+                <Label Content="雇用保険加入日"/>
+                <DatePicker Name="EmploymentInsuranceJoinDatePicker" Margin="0,5"/>
+                <Label Content="社会保険脱退日"/>
+                <DatePicker Name="SocialInsuranceLeaveDatePicker" Margin="0,5"/>
+                <Label Content="雇用保険脱退日"/>
+                <DatePicker Name="EmploymentInsuranceLeaveDatePicker" Margin="0,5"/>
+                <Button Content="保存" Click="SaveButton_Click" Margin="0,10"/>
+                <Button Content="削除" Click="DeleteButton_Click" Margin="0,10"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

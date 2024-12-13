@@ -1,7 +1,10 @@
 ﻿<Application x:Class="Empro.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Empro"
+             xmlns:converters="clr-namespace:Empro.Converters"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        <converters:BooleanToJoinedConverter x:Key="BooleanToJoinedConverter"/>
     </Application.Resources>
 </Application>

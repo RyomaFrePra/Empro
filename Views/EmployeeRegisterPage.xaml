@@ -6,45 +6,66 @@
       mc:Ignorable="d"
       Title="社員登録ページ">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBox Name="EmployeeNumberTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="社員番号"/>
-            <TextBox Name="FirstNameTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="姓"/>
-            <TextBox Name="LastNameTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="名"/>
-            <TextBox Name="KanaTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="フリガナ"/>
-            <ComboBox Name="GenderComboBox" Margin="0,5">
-                <ComboBoxItem Content="男"/>
-                <ComboBoxItem Content="女"/>
-            </ComboBox>
-            <ComboBox Name="DepartmentComboBox" Margin="0,5">
-                <ComboBoxItem Content="ロイヤル"/>
-                <ComboBoxItem Content="アネックス"/>
-                <ComboBoxItem Content="サーラ郡上"/>
-            </ComboBox>
-            <ComboBox Name="EmploymentTypeComboBox" Margin="0,5">
-                <ComboBoxItem Content="役員"/>
-                <ComboBoxItem Content="正社員"/>
-                <ComboBoxItem Content="パート"/>
-            </ComboBox>
-            <DatePicker Name="BirthDatePicker" Margin="0,5"/>
-            <DatePicker Name="JoinDatePicker" Margin="0,5"/>
-            <DatePicker Name="ResignDatePicker" Margin="0,5"/>
-            <TextBox Name="TaxAddressTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="住民税を収める住所"/>
-            <ComboBox Name="ResidentTaxCategoryComboBox" Margin="0,5">
-                <ComboBoxItem Content="普通徴収"/>
-                <ComboBoxItem Content="特別徴収"/>
-            </ComboBox>
-            <TextBox Name="NotesTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="備考"/>
-            <ComboBox Name="SocialInsuranceComboBox" Margin="0,5">
-                <ComboBoxItem Content="加入"/>
-                <ComboBoxItem Content="未加入"/>
-            </ComboBox>
-            <DatePicker Name="SocialInsuranceJoinDatePicker" Margin="0,5"/>
-            <ComboBox Name="EmploymentInsuranceComboBox" Margin="0,5">
-                <ComboBoxItem Content="加入"/>
-                <ComboBoxItem Content="未加入"/>
-            </ComboBox>
-            <DatePicker Name="EmploymentInsuranceJoinDatePicker" Margin="0,5"/>
-            <Button Content="保存" Click="SaveButton_Click" Margin="0,10"/>
-        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+                <Label Content="社員番号"/>
+                <TextBox Name="EmployeeNumberTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="社員番号"/>
+                <Label Content="姓"/>
+                <TextBox Name="FirstNameTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="姓"/>
+                <Label Content="名"/>
+                <TextBox Name="LastNameTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="名"/>
+                <Label Content="フリガナ"/>
+                <TextBox Name="KanaTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="フリガナ"/>
+                <Label Content="性別"/>
+                <ComboBox Name="GenderComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Male"/>
+                    <ComboBoxItem Content="Female"/>
+                </ComboBox>
+                <Label Content="部署"/>
+                <ComboBox Name="DepartmentComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Royal"/>
+                    <ComboBoxItem Content="Annex"/>
+                    <ComboBoxItem Content="SalaGujo"/>
+                </ComboBox>
+                <Label Content="雇用形態"/>
+                <ComboBox Name="EmploymentTypeComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Executive"/>
+                    <ComboBoxItem Content="FullTime"/>
+                    <ComboBoxItem Content="PartTime"/>
+                </ComboBox>
+                <Label Content="生年月日"/>
+                <DatePicker Name="BirthDatePicker" Margin="0,5"/>
+                <Label Content="入社日"/>
+                <DatePicker Name="JoinDatePicker" Margin="0,5"/>
+                <Label Content="退職日"/>
+                <DatePicker Name="ResignDatePicker" Margin="0,5"/>
+                <Label Content="住民税を収める住所"/>
+                <TextBox Name="TaxAddressTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="住民税を収める住所"/>
+                <Label Content="住民税区分"/>
+                <ComboBox Name="ResidentTaxCategoryComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Ordinary"/>
+                    <ComboBoxItem Content="Special"/>
+                </ComboBox>
+                <Label Content="備考"/>
+                <TextBox Name="NotesTextBox" Margin="0,5" GotFocus="RemoveText" LostFocus="AddText" Tag="備考"/>
+                <Label Content="社会保険加入状況"/>
+                <ComboBox Name="SocialInsuranceComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Joined"/>
+                    <ComboBoxItem Content="NotJoined"/>
+                </ComboBox>
+                <Label Content="社会保険加入日"/>
+                <DatePicker Name="SocialInsuranceJoinDatePicker" Margin="0,5"/>
+                <Label Content="雇用保険加入状況"/>
+                <ComboBox Name="EmploymentInsuranceComboBox" Margin="0,5">
+                    <ComboBoxItem Content="Joined"/>
+                    <ComboBoxItem Content="NotJoined"/>
+                </ComboBox>
+                <Label Content="雇用保険加入日"/>
+                <DatePicker Name="EmploymentInsuranceJoinDatePicker" Margin="0,5"/>
+                <Button Content="保存" Click="SaveButton_Click" Margin="0,10"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
+
+

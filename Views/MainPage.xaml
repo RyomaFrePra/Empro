@@ -1,0 +1,56 @@
+﻿<Page x:Class="Empro.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="トップページ">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="雇用区分" VerticalAlignment="Center"/>
+                <ComboBox Name="EmploymentTypeFilter" Width="120" Margin="5,0"/>
+                <Label Content="部署" VerticalAlignment="Center"/>
+                <ComboBox Name="DepartmentFilter" Width="120" Margin="5,0"/>
+                <Label Content="性別" VerticalAlignment="Center"/>
+                <ComboBox Name="GenderFilter" Width="120" Margin="5,0"/>
+                <Label Content="社会保険加入状況" VerticalAlignment="Center"/>
+                <ComboBox Name="SocialInsuranceFilter" Width="120" Margin="5,0"/>
+                <Label Content="雇用保険加入状況" VerticalAlignment="Center"/>
+                <ComboBox Name="EmploymentInsuranceFilter" Width="120" Margin="5,0"/>
+                <Button Content="絞り込む" Click="FilterButton_Click" Margin="10,0"/>
+            </StackPanel>
+            <Label Name="EmployeeCountLabel" Content="該当社員数：0人" Margin="0,0,0,10"/>
+            <DataGrid Name="EmployeeGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="社員番号" Binding="{Binding EmployeeNumber}"/>
+                    <DataGridTextColumn Header="姓" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="名" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="フリガナ" Binding="{Binding Kana}"/>
+                    <DataGridTextColumn Header="性別" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="部署" Binding="{Binding Department}"/>
+                    <DataGridTextColumn Header="雇用形態" Binding="{Binding EmploymentType}"/>
+                    <DataGridTextColumn Header="生年月日" Binding="{Binding BirthDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="入社日" Binding="{Binding JoinDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="退職日" Binding="{Binding ResignDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="住民税を収める住所" Binding="{Binding TaxAddress}"/>
+                    <DataGridTextColumn Header="住民税区分" Binding="{Binding ResidentTaxCategory}"/>
+                    <DataGridTextColumn Header="備考" Binding="{Binding Notes}"/>
+                    <DataGridTextColumn Header="社会保険加入状況" Binding="{Binding IsSocialInsuranceJoined, Converter={StaticResource BooleanToJoinedConverter}}"/>
+                    <DataGridTextColumn Header="社会保険加入日" Binding="{Binding SocialInsuranceJoinDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="雇用保険加入状況" Binding="{Binding IsEmploymentInsuranceJoined, Converter={StaticResource BooleanToJoinedConverter}}"/>
+                    <DataGridTextColumn Header="雇用保険加入日" Binding="{Binding EmploymentInsuranceJoinDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="社会保険脱退日" Binding="{Binding SocialInsuranceLeaveDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTextColumn Header="雇用保険脱退日" Binding="{Binding EmploymentInsuranceLeaveDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                    <DataGridTemplateColumn Header="編集">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="編集" Click="EditButton_Click" Tag="{Binding EmployeeNumber}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

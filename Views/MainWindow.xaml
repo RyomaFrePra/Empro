@@ -11,6 +11,6 @@
                 <MenuItem Header="社員新規追加" Click="OpenAddEmployeeWindow"/>
             </MenuItem>
         </Menu>
-        <DataGrid Name="EmployeeGrid" AutoGenerateColumns="True" Margin="0,30,0,0"/>
+        <Frame Name="MainFrame" Margin="0,30,0,0"/>
     </Grid>
 </Window>

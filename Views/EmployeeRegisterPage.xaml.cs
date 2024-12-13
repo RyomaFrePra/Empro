@@ -24,38 +24,54 @@ namespace Empro.Views
 
             try
             {
+                var gender = GenderComboBox.SelectedItem != null ? (Gender)Enum.Parse(typeof(Gender), ((ComboBoxItem)GenderComboBox.SelectedItem).Content.ToString()) : Gender.Male;
+
                 var newEmployee = new Employee
                 {
                     EmployeeNumber = EmployeeNumberTextBox.Text,
                     FirstName = FirstNameTextBox.Text,
                     LastName = LastNameTextBox.Text,
                     Kana = KanaTextBox.Text,
-                    Gender = (Gender)Enum.Parse(typeof(Gender), ((ComboBoxItem)GenderComboBox.SelectedItem).Content.ToString()),
-                    Department = (DepartmentType)Enum.Parse(typeof(DepartmentType), ((ComboBoxItem)DepartmentComboBox.SelectedItem).Content.ToString()),
-                    EmploymentType = (EmploymentType)Enum.Parse(typeof(EmploymentType), ((ComboBoxItem)EmploymentTypeComboBox.SelectedItem).Content.ToString()),
+                    Gender = gender,
+                    Department = DepartmentComboBox.SelectedItem != null ? (DepartmentType)Enum.Parse(typeof(DepartmentType), ((ComboBoxItem)DepartmentComboBox.SelectedItem).Content.ToString()) : DepartmentType.Royal,
+                    EmploymentType = EmploymentTypeComboBox.SelectedItem != null ? (EmploymentType)Enum.Parse(typeof(EmploymentType), ((ComboBoxItem)EmploymentTypeComboBox.SelectedItem).Content.ToString()) : EmploymentType.FullTime,
                     BirthDate = BirthDatePicker.SelectedDate,
                     JoinDate = JoinDatePicker.SelectedDate,
                     ResignDate = ResignDatePicker.SelectedDate,
                     TaxAddress = TaxAddressTextBox.Text,
-                    ResidentTaxCategory = (TaxCategory)Enum.Parse(typeof(TaxCategory), ((ComboBoxItem)ResidentTaxCategoryComboBox.SelectedItem).Content.ToString()),
+                    ResidentTaxCategory = ResidentTaxCategoryComboBox.SelectedItem != null ? (TaxCategory)Enum.Parse(typeof(TaxCategory), ((ComboBoxItem)ResidentTaxCategoryComboBox.SelectedItem).Content.ToString()) : TaxCategory.Ordinary,
                     Notes = NotesTextBox.Text,
-                    IsSocialInsuranceJoined = SocialInsuranceComboBox.SelectedItem.ToString() == "加入",
+                    IsSocialInsuranceJoined = SocialInsuranceComboBox.SelectedItem != null && ((ComboBoxItem)SocialInsuranceComboBox.SelectedItem).Content.ToString() == "Joined",
                     SocialInsuranceJoinDate = SocialInsuranceJoinDatePicker.SelectedDate,
-                    IsEmploymentInsuranceJoined = EmploymentInsuranceComboBox.SelectedItem.ToString() == "加入",
+                    IsEmploymentInsuranceJoined = EmploymentInsuranceComboBox.SelectedItem != null && ((ComboBoxItem)EmploymentInsuranceComboBox.SelectedItem).Content.ToString() == "Joined",
                     EmploymentInsuranceJoinDate = EmploymentInsuranceJoinDatePicker.SelectedDate
                 };
 
-                // 保存処理を呼び出す (仮の保存メソッド)
-                SaveEmployee(newEmployee);
+                // 保存処理を呼び出す
+                EmployeeDataStore.AddEmployee(newEmployee);
 
                 MessageBox.Show("社員情報を保存しました。", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
                 ClearForm();
+
+                // トップ画面に戻る
+                NavigationService.Navigate(new MainPage());
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"無効な値が入力されました: {ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show($"必須フィールドが未入力です: {ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"エラーが発生しました: {ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
+
 
         private void ClearForm()
         {
@@ -78,9 +94,22 @@ namespace Empro.Views
             EmploymentInsuranceJoinDatePicker.SelectedDate = null;
         }
 
-        private void SaveEmployee(Employee employee)
+        private void RemoveText(object sender, RoutedEventArgs e)
         {
-            // データベースに保存する処理を実装
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text == textBox.Tag.ToString())
+            {
+                textBox.Text = "";
+            }
+        }
+
+        private void AddText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = textBox.Tag.ToString();
+            }
         }
     }
 }

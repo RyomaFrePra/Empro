@@ -4,7 +4,7 @@ namespace Empro.Models
 {
     public class Employee
     {
-        public string EmployeeNumber { get; set; } // Ensure this property is unique
+        public string EmployeeNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Kana { get; set; }
@@ -21,7 +21,10 @@ namespace Empro.Models
         public DateTime? SocialInsuranceJoinDate { get; set; }
         public bool IsEmploymentInsuranceJoined { get; set; }
         public DateTime? EmploymentInsuranceJoinDate { get; set; }
+        public DateTime? SocialInsuranceLeaveDate { get; set; } // 社保脱退日
+        public DateTime? EmploymentInsuranceLeaveDate { get; set; } // 雇用保険脱退日
     }
+
 
     public enum Gender
     {
@@ -33,13 +36,13 @@ namespace Empro.Models
     {
         Royal, // ロイヤル
         Annex, // アネックス
-        Sala // サーラ郡上
+        SalaGujo // サーラ郡上
     }
 
     public enum EmploymentType
     {
         Executive, // 役員
-        Regular, // 正社員
+        FullTime, // 正社員
         PartTime // パート
     }
 
